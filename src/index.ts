@@ -13,6 +13,10 @@ app.command("say-hello", ({command, ack, say}) => {
     say(`Hello ${command.user_name}`)
 });
 
+app.error((err) => {
+    console.error(err);
+});
+
 (async () => {
     await app.start(process.env.PORT || 3000);
     console.log("Bolt app is running")
