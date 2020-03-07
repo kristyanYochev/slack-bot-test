@@ -8,9 +8,9 @@ const app = new App({
     token: process.env.SLACK_BOT_TOKEN
 });
 
-app.command("say-hello", ({command, ack, say}) => {
+app.command("/say-hello", ({command, ack, say}) => {
     ack();
-    say(`Hello ${command.user_name}`)
+    say(`Hello ${command.user_name}`);
 });
 
 app.error((err) => {
