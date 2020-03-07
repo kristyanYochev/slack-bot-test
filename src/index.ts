@@ -9,8 +9,10 @@ const app = new App({
 });
 
 app.command("/say-hello", ({command, ack, say}) => {
-    ack();
-    say(`Hello ${command.user_name}`);
+    ack(`OK, let me check real quick`);
+    setTimeout(() => {
+        say(`Hello ${command.user_name}`);
+    }, 2000);
 });
 
 app.error((err) => {
