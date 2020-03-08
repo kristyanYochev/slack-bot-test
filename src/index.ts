@@ -4,6 +4,11 @@ import axios from 'axios';
 
 dotenv.config();
 
+interface FoaasResponse {
+    message: string,
+    subtitle: string
+};
+
 const bot = new App({
     token: process.env.SLACK_BOT_TOKEN,
     signingSecret: process.env.SLACK_SIGNING_SECRET
@@ -17,7 +22,8 @@ bot.command('/bag', async ({command, ack, say}) => {
             'Accept': 'application/json'
         }
     });
-    say(`${foaas_response.data.message} ${foaas_response.data.subtitle}`);
+    let response_data = foaas_response.data as FoaasResponse;
+    say(`${response_data.message} ${response_data.subtitle}`);
 });
 
 (async () => {
